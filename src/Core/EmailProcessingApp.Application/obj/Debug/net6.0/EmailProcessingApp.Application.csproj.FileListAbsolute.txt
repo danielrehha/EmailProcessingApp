@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\bin\Debug\net6.0\EmailProcessingApp.Application.deps.json
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\bin\Debug\net6.0\EmailProcessingApp.Application.dll
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\bin\Debug\net6.0\EmailProcessingApp.Application.pdb
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\bin\Debug\net6.0\EmailProcessingApp.Domain.dll
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\bin\Debug\net6.0\EmailProcessingApp.Domain.pdb
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.csproj.AssemblyReference.cache
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.AssemblyInfoInputs.cache
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.AssemblyInfo.cs
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.csproj.CopyComplete
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.dll
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\refint\EmailProcessingApp.Application.dll
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\EmailProcessingApp.Application.pdb
+C:\Users\Administrator\Desktop\repos\EmailProcessingApp\EmailProcessingApp.Application\obj\Debug\net6.0\ref\EmailProcessingApp.Application.dll

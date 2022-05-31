@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "PA70tZcENAowektja34KmNet+X8YAbiJPItiK8I9uP0=",
+  "Source": "EmailProcessingApp.API",
+  "BasePath": "_content/EmailProcessingApp.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
