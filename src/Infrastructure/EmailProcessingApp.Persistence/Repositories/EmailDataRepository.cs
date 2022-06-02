@@ -14,7 +14,18 @@ namespace EmailProcessingApp.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<bool> IsAttributeListUnique(EmailDataDto dto)
+        public async Task<List<EmailData>> GetRangeByEmailAddressAsync(string email, DateTime from, DateTime until)
+        {
+            var emailDataCollection = _context.EmailData.Where(x => x.Email == email);
+
+            emailDataCollection = emailDataCollection.Where(x => x.CreationDate.Date >= from.Date && x.CreationDate.Date <= until.Date);
+
+            var result = await emailDataCollection.ToListAsync();
+
+            return result;
+        }
+
+        public async Task<bool> IsAttributeListUniqueAsync(EmailDataDto dto)
         {
             var emailDataList = await _context.EmailData
                 .Where(x => x.Email == dto.Email && x.CreationDate.Date == DateTime.Now.Date)

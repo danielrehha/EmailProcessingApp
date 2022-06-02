@@ -5,6 +5,6 @@ namespace EmailProcessingApp.API.Helpers.Contracts
 {
     public interface IResponseManager
     {
-        ActionResult<T> MapActionResult<T>(T response) where T : BaseResponse;
+        ActionResult<T> MapActionResult<T>(T response, bool noContent = false) where T : ClientCommandResponse;
     }
 }

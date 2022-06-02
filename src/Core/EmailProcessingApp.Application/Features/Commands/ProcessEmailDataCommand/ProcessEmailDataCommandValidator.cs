@@ -24,7 +24,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
         private async Task<bool> IsAttributeListUnique(ProcessEmailDataCommand command, CancellationToken token)
         {
-            return await _repository.IsAttributeListUnique(command.EmailDataDto);
+            return await _repository.IsAttributeListUniqueAsync(command.EmailDataDto);
         }
     }
 }

@@ -5,11 +5,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace EmailProcessingApp.Infrastructure.Logging
 {
-    public class LogServiceManager : ILogServiceManager
+    public class BlobServiceManager : IBlobServiceManager
     {
         private readonly IConfiguration _configuration;
         
-        public LogServiceManager(IConfiguration configuration)
+        public BlobServiceManager(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -19,7 +19,7 @@ namespace EmailProcessingApp.Infrastructure.Logging
             return _configuration.GetConnectionString("Blob");
         }
 
-        public string LogContainer(BlobContainerType containerType)
+        public string GetContainerName(BlobContainerType containerType)
         {
             var containerConfigurationKey = containerType.ToContainerConfigurationKey();
 

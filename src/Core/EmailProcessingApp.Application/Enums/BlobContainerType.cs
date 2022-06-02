@@ -2,6 +2,8 @@
 {
     public enum BlobContainerType
     {
-        EmailLogContainer
+        EmailLogContainer,
+        EmailBodyContainer,
+        MessageTemplateContainer
     }
 }

@@ -24,7 +24,7 @@ namespace EmailProcessingApp.API.Controllers
         {
             var result = await _mediator.Send(new ProcessEmailDataCommand(dto));
 
-            return _responseManager.MapActionResult(result);
+            return _responseManager.MapActionResult(result, noContent: true);
         }
     }
 }

@@ -14,6 +14,7 @@ namespace EmailProcessingApp.Persistence
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(configuration.GetConnectionString("Db"), new MySqlServerVersion(new Version(8,0))));
             services.AddScoped(typeof(IAsyncRepository<>), typeof(BaseRepository<>));
             services.AddScoped<IEmailDataRepository, EmailDataRepository>();
+            services.AddScoped<IResponseEmailRepository, ResponseEmailRepository>();
 
             return services;
         }

@@ -1,6 +1,7 @@
 ﻿using EmailProcessingApp.Application.Dto;
 using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Domain.Models;
+using Newtonsoft.Json;
 
 namespace EmailProcessingApp.Application.Extensions
 {
@@ -28,13 +29,45 @@ namespace EmailProcessingApp.Application.Extensions
             return dto;
         }
 
+        public static string ToLogData(this EmailDataDto dto, BaseResponse response)
+        {
+            var logData = new
+            {
+                ClientPayload = dto,
+                Response = response,
+            };
+            return $"[{DateTime.UtcNow}] Incoming client payload\n" + JsonConvert.SerializeObject(logData, Formatting.Indented) + Environment.NewLine;
+        }
+
+        public static string ToBlobName(this EmailDataDto dto)
+        {
+            return DateTime.Now.ToShortDateString().Replace("/", "-") + "_" + dto.Email + ".txt";
+        }
+
         public static string ToContainerConfigurationKey(this BlobContainerType type)
         {
-            if (type == BlobContainerType.EmailLogContainer)
+            switch(type)
             {
-                return "EmailDataPayloadLogging";
+                case BlobContainerType.EmailLogContainer:
+                    return "EmailDataPayloadContainer";
+                case BlobContainerType.EmailBodyContainer:
+                    return "ResponseEmailBodyContainer";
+                case BlobContainerType.MessageTemplateContainer:
+                    return "MessageTemplateContainer";
+                default:
+                    return "Default";
             }
-            return "Default";
+        }
+
+        public static string ToFileName(this MessageTemplateType type)
+        {
+            switch(type)
+            {
+                case MessageTemplateType.ResponseEmailBody:
+                    return "response-email-template.txt";
+                default:
+                    return "default-template.txt";
+            }
         }
     }
 }

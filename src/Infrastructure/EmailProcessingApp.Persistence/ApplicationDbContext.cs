@@ -15,16 +15,13 @@ namespace EmailProcessingApp.Persistence
         {
         }
 
-       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql(@"server=localhost;database=BookStoreDb;uid=root;password=;");
-        }*/
-
         public DbSet<EmailData> EmailData { get; set; }
+        public DbSet<ResponseEmail> ResponseEmail { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<EmailData>().HasKey(p => p.Key);
+            builder.Entity<ResponseEmail>().HasKey(p => p.Key);
         }
     }
 }

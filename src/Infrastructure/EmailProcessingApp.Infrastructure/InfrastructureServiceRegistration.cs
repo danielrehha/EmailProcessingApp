@@ -1,5 +1,7 @@
 ﻿using EmailProcessingApp.Application.Contract.Logging;
+using EmailProcessingApp.Application.Contract.Static;
 using EmailProcessingApp.Infrastructure.Logging;
+using EmailProcessingApp.Infrastructure.Static;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EmailProcessingApp.Infrastructure
@@ -8,8 +10,9 @@ namespace EmailProcessingApp.Infrastructure
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
-            services.AddScoped<ILogServiceManager, LogServiceManager>();
-            services.AddScoped<ILogService, LogService>();
+            services.AddScoped<IBlobServiceManager, BlobServiceManager>();
+            services.AddScoped<IBlobService, BlobService>();
+            services.AddScoped<IMessageTemplateService, MessageTemplateService>();
 
             return services;
         }

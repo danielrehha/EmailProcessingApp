@@ -2,7 +2,7 @@
 
 namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataCommand
 {
-    public class ProcessEmailDataCommandResponse : BaseResponse
+    public class ProcessEmailDataCommandResponse : ClientCommandResponse
     {
 
     }

@@ -6,11 +6,15 @@ namespace EmailProcessingApp.API.Helpers
 {
     public class ResponseManager : ControllerBase, IResponseManager
     {
-        public ActionResult<T> MapActionResult<T>(T response) where T : BaseResponse
+        public ActionResult<T> MapActionResult<T>(T response, bool noContent = false) where T : ClientCommandResponse
         {
             if (!response.Success)
             {
                 return StatusCode((int)response.HttpStatusCode, response);
+            }
+            if (noContent)
+            {
+                return Ok();
             }
             return Ok(response);
         }

@@ -2,9 +2,9 @@
 
 namespace EmailProcessingApp.Application.Contract.Logging
 {
-    public interface ILogServiceManager
+    public interface IBlobServiceManager
     {
         string ConnectionString();
-        string LogContainer(BlobContainerType containerType);
+        string GetContainerName(BlobContainerType containerType);
     }
 }

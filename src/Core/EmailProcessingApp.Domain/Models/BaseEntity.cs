@@ -2,7 +2,7 @@
 {
     public class BaseEntity
     {
-        public virtual string Key { get; set; }
+        public Guid Key { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

@@ -5,6 +5,7 @@ namespace EmailProcessingApp.Application.Contract.Persistence
 {
     public interface IEmailDataRepository : IAsyncRepository<EmailData>
     {
-        Task<bool> IsAttributeListUnique(EmailDataDto dto);
+        Task<bool> IsAttributeListUniqueAsync(EmailDataDto dto);
+        Task<List<EmailData>> GetRangeByEmailAddressAsync(string email, DateTime from, DateTime until);
     }
 }
