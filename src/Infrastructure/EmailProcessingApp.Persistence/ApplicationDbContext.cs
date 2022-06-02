@@ -16,7 +16,7 @@ namespace EmailProcessingApp.Persistence
         }
 
         public DbSet<EmailData> EmailData { get; set; }
-        public DbSet<ResponseEmail> ResponseEmail { get; set; }
+        public DbSet<ResponseEmail> SendEmails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

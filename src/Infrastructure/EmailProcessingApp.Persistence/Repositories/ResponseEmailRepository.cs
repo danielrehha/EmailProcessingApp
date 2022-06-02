@@ -15,7 +15,7 @@ namespace EmailProcessingApp.Persistence.Repositories
 
         public async Task<ResponseEmail> FindByEmailAndDateAsync(string email, DateTime date)
         {
-            var result = await _context.ResponseEmail
+            var result = await _context.SendEmails
                 .FirstOrDefaultAsync(e => e.Email == email && e.CreationDate.Date == date);
 
             return result;
