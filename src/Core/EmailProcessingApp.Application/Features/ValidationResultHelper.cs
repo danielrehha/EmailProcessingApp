@@ -11,7 +11,7 @@ namespace EmailProcessingApp.Application.Features
 {
     public static class ValidationResultHelper
     {
-        public static ValidationResult Resolve<T>(this ValidationResult result, T response) where T : BaseResponse
+        public static ValidationResult Resolve<T>(this ValidationResult result, T response) where T : ClientCommandResponse
         {
             if (result.Errors.Count > 0)
             {
