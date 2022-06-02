@@ -1,5 +1,4 @@
-﻿using EmailProcessingApp.Application.Contract.Logging;
-using EmailProcessingApp.Application.Contract.Persistence;
+﻿using EmailProcessingApp.Application.Contract.Persistence;
 using EmailProcessingApp.Application.Features.Commands.ProcessEmailDataCommand.CreateResponseEmailCommandNamespace;
 using EmailProcessingApp.Domain.Models;
 using MediatR;
@@ -10,13 +9,11 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
     public class HandleResponseEmailCommandHandler : IRequestHandler<HandleResponseEmailCommand, HandleResponseEmailCommandResponse>
     {
         private readonly IEmailDataRepository _repository;
-        private readonly IBlobService _blobService;
         private readonly IMediator _mediator;
 
-        public HandleResponseEmailCommandHandler(IEmailDataRepository repository, IBlobService blobService, IMediator mediator)
+        public HandleResponseEmailCommandHandler(IEmailDataRepository repository, IMediator mediator)
         {
             _repository = repository;
-            _blobService = blobService;
             _mediator = mediator;
         }
 

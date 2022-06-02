@@ -1,5 +1,6 @@
 using EmailProcessingApp.API.Helpers;
 using EmailProcessingApp.API.Helpers.Contracts;
+using EmailProcessingApp.API.Middlewares;
 using EmailProcessingApp.Application;
 using EmailProcessingApp.Infrastructure;
 using EmailProcessingApp.Persistence;
@@ -30,5 +31,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware<HeaderAuthenticationMiddleware>();
 
 app.Run();
