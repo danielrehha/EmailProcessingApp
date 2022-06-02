@@ -3,3 +3,19 @@
 ################################################################################
 
 /src/API/EmailProcessingApp.API/appsettings.Development.json
+/.vs/EmailProcessingApp
+/src/API/EmailProcessingApp.API/bin/Debug/net6.0
+/src/API/EmailProcessingApp.API/obj/Debug/net6.0
+/src/API/EmailProcessingApp.API/obj
+/src/Core/EmailProcessingApp.Application/bin/Debug/net6.0
+/src/Core/EmailProcessingApp.Application/obj/Debug/net6.0
+/src/Core/EmailProcessingApp.Application/obj
+/src/Core/EmailProcessingApp.Domain/bin/Debug/net6.0
+/src/Core/EmailProcessingApp.Domain/obj/Debug/net6.0
+/src/Core/EmailProcessingApp.Domain/obj
+/src/Infrastructure/EmailProcessingApp.Infrastructure/bin/Debug/net6.0
+/src/Infrastructure/EmailProcessingApp.Infrastructure/obj/Debug/net6.0
+/src/Infrastructure/EmailProcessingApp.Infrastructure/obj
+/src/Infrastructure/EmailProcessingApp.Persistence/bin/Debug/net6.0
+/src/Infrastructure/EmailProcessingApp.Persistence/obj/Debug/net6.0
+/src/Infrastructure/EmailProcessingApp.Persistence/obj
