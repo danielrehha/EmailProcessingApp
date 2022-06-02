@@ -39,9 +39,15 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
             var attributes = new List<string>();
 
             var attributeArrays = result
-                .Select(e => e.Attributes.Split(",").Union(attributes));
+                .Select(e => e.Attributes.Split(","))
+                .ToList();
 
-            if (attributes.Count >= 10)
+            foreach(var array in attributeArrays)
+            {
+                attributes.AddRange(array);
+            }
+
+            if (attributes.Distinct().Count() >= 10)
             {
                 await _mediator.Send(new CreateResponseEmailCommand(request.EmailDataDto.Email, attributes.Take(10).ToList()));
             }

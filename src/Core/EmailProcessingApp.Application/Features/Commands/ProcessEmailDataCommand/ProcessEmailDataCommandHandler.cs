@@ -59,7 +59,10 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
                 Trace.TraceError($"Failed to log incoming request to blob storage:\n{ex.Message}");
             }
 
-            await _mediator.Send(new HandleResponseEmailCommand(request.EmailDataDto));
+            if(response.Success)
+            {
+                await _mediator.Send(new HandleResponseEmailCommand(request.EmailDataDto));
+            }
 
             return response;
         }

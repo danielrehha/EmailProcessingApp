@@ -55,7 +55,7 @@ namespace EmailProcessingApp.Infrastructure.Logging
                 var stream = new MemoryStream(bytes);
                 await blobClient.UploadAsync(stream);
                 return bytes;
-            };
+            }
 
             var resultStream = await blobClient.DownloadStreamingAsync();
 
