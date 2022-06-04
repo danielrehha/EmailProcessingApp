@@ -48,5 +48,4 @@ jobs:
             HEADERAUTHKEY="${{ secrets.PROD_HEADER_AUTH_KEY }}"
           tags: | 
             ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:release
-            ${{ env.IMAGE_NAME }}.v.${{ github.run_number }}
-            ${{ env.IMAGE_NAME }}
+            ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}.v.${{ github.run_number }}
