@@ -1,11 +1,6 @@
 ﻿using EmailProcessingApp.Domain.Models;
+using FluentValidation;
 using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmailProcessingApp.Application.Features
 {
@@ -15,8 +10,7 @@ namespace EmailProcessingApp.Application.Features
         {
             if (result.Errors.Count > 0)
             {
-                response.HttpStatusCode = HttpStatusCode.BadRequest;
-                response.ErrorMessage = result.Errors.First().ErrorMessage;
+                throw new ValidationException(result.Errors);
             }
             return result;
         }

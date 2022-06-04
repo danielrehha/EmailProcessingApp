@@ -24,6 +24,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseExceptionHandler("/error");
 }
 
 app.UseHttpsRedirection();
@@ -33,5 +34,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.UseMiddleware<HeaderAuthenticationMiddleware>();
+
+app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.Run();

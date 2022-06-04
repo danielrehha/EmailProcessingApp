@@ -28,7 +28,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
             var email = await _repository.FindByEmailAndDateAsync(request.Email, DateTime.Now);
 
-            if(email != null)
+            if (email != null)
             {
                 return response;
             }
@@ -37,17 +37,10 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
             var messageBody = messageTemplate.Replace("{}", string.Join(",", request.Attributes));
 
-            try
-            {
-                await _repository.AddAsync(new ResponseEmail() { Email = request.Email, EmailBody = Encoding.UTF8.GetBytes(messageBody) });
+            await _repository.AddAsync(new ResponseEmail() { Email = request.Email, EmailBody = Encoding.UTF8.GetBytes(messageBody) });
 
-                var blobName = $"{DateTime.Now.ToShortDateString().Replace("/", "-")}_{request.Email}";
-                await _blobService.AppendToBlobAsync(blobName, messageBody, BlobContainerType.EmailBodyContainer);
-            } catch (Exception ex)
-            {
-                response.ErrorMessage = ex.Message;
-                Trace.TraceError(ex.Message);
-            }
+            var blobName = $"{DateTime.Now.ToShortDateString().Replace("/", "-")}_{request.Email}.txt";
+            await _blobService.AppendToBlobAsync(blobName, messageBody, BlobContainerType.EmailBodyContainer);
 
             return response;
         }

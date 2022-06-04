@@ -23,7 +23,7 @@ namespace EmailProcessingApp.Persistence.Repositories
             return entity;
         }
 
-        public virtual async Task<T> DeleteAsync(object id)
+        public virtual async Task<T> DeleteAsync(Guid id)
         {
             var entity = await _context.Set<T>().FindAsync(id);
 
@@ -39,13 +39,13 @@ namespace EmailProcessingApp.Persistence.Repositories
             return result;
         }
 
-        public virtual async Task<T> GetByIdAsync(object id)
+        public virtual async Task<T> GetByIdAsync(Guid id)
         {
             var result = await _context.Set<T>().FindAsync(id);
             return result;
         }
 
-        public async Task<T> UpdateAsync(object id, T entity)
+        public async Task<T> UpdateAsync(Guid id, T entity)
         {
             var result = await _context.Set<T>().FindAsync(id);
 
@@ -57,7 +57,7 @@ namespace EmailProcessingApp.Persistence.Repositories
             return result;
         }
 
-        public async Task<bool> DoesExistAsync(object id)
+        public async Task<bool> DoesExistAsync(Guid id)
         {
             var result = await _context.Set<T>().FindAsync(id);
             if (result == null)

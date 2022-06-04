@@ -3,10 +3,10 @@
     public interface IAsyncRepository<T> where T : class
     {
         Task<IReadOnlyList<T>> QueryAllAsync();
-        Task<T> GetByIdAsync(object id);
+        Task<T> GetByIdAsync(Guid id);
         Task<T> AddAsync(T entity);
-        Task<T> UpdateAsync(object id, T entity);
-        Task<T> DeleteAsync(object id);
-        Task<bool> DoesExistAsync(object id);
+        Task<T> UpdateAsync(Guid id, T entity);
+        Task<T> DeleteAsync(Guid id);
+        Task<bool> DoesExistAsync(Guid id);
     }
 }

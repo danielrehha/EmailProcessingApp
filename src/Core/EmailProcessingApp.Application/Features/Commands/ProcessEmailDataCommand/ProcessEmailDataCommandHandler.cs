@@ -33,36 +33,13 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
             validationResult.Resolve(response);
 
-            if (response.Success)
-            {
-                try
-                {
-                    await _repository.AddAsync(request.EmailDataDto.ToEmailData());
-                }
-                catch (Exception ex)
-                {
-                    response.HttpStatusCode = HttpStatusCode.InternalServerError;
-                    response.ErrorMessage = "Unexpected error.";
+            await _repository.AddAsync(request.EmailDataDto.ToEmailData());
 
-                    Trace.TraceError($"Failed to save email data to database:\n{ex.Message}");
-                }
-            }
+            var blobName = request.EmailDataDto.ToBlobName();
+            var content = request.EmailDataDto.ToLogData(response);
+            await _blobService.AppendToBlobAsync(blobName, content, BlobContainerType.EmailLogContainer);
 
-            try
-            {
-                var blobName = request.EmailDataDto.ToBlobName();
-                var content = request.EmailDataDto.ToLogData(response);
-                await _blobService.AppendToBlobAsync(blobName, content, BlobContainerType.EmailLogContainer);
-            }
-            catch (Exception ex)
-            {
-                Trace.TraceError($"Failed to log incoming request to blob storage:\n{ex.Message}");
-            }
-
-            if(response.Success)
-            {
-                await _mediator.Send(new HandleResponseEmailCommand(request.EmailDataDto));
-            }
+            await _mediator.Send(new HandleResponseEmailCommand(request.EmailDataDto));
 
             return response;
         }

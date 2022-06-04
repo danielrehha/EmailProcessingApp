@@ -13,7 +13,7 @@ namespace EmailProcessingApp.API.Controllers
         private readonly IResponseManager _responseManager;
         private readonly IMediator _mediator;
 
-        public EmailDataController(IResponseManager responseManager, IMediator mediator)
+        public EmailDataController(IResponseManager responseManager, IMediator mediator, ILogger logger)
         {
             _responseManager = responseManager;
             _mediator = mediator;

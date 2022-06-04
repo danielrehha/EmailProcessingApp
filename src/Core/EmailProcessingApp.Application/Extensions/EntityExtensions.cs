@@ -1,6 +1,7 @@
 ﻿using EmailProcessingApp.Application.Dto;
 using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Domain.Models;
+using FluentValidation;
 using Newtonsoft.Json;
 
 namespace EmailProcessingApp.Application.Extensions
@@ -46,7 +47,7 @@ namespace EmailProcessingApp.Application.Extensions
 
         public static string ToContainerConfigurationKey(this BlobContainerType type)
         {
-            switch(type)
+            switch (type)
             {
                 case BlobContainerType.EmailLogContainer:
                     return "EmailDataPayloadContainer";
@@ -61,13 +62,24 @@ namespace EmailProcessingApp.Application.Extensions
 
         public static string ToFileName(this MessageTemplateType type)
         {
-            switch(type)
+            switch (type)
             {
                 case MessageTemplateType.ResponseEmailBody:
                     return "response-email-template.txt";
                 default:
                     return "default-template.txt";
             }
+        }
+
+        public static string ToProblemDetails(this ValidationException ex)
+        {
+            var details = new
+            {
+                StatusCode = 400,
+                Errors = ex.Errors.Select(x => x.ErrorMessage).ToList()
+            };
+
+            return JsonConvert.SerializeObject(details, Formatting.Indented);
         }
     }
 }

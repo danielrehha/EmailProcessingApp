@@ -21,17 +21,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
         {
             var response = new HandleResponseEmailCommandResponse();
 
-            var result = new List<EmailData>();
-
-            try
-            {
-                result = await _repository.GetRangeByEmailAddressAsync(request.EmailDataDto.Email, DateTime.Now, DateTime.Now);
-            }
-            catch (Exception ex)
-            {
-                response.ErrorMessage = ex.Message;
-                Trace.TraceError($"[{DateTime.UtcNow}] Failed to fetch stored payloads from client:\n{ex.Message}");
-            }
+            var result = await _repository.GetRangeByEmailAddressAsync(request.EmailDataDto.Email, DateTime.Now, DateTime.Now);
 
             var attributes = new List<string>();
 
@@ -39,7 +29,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
                 .Select(e => e.Attributes.Split(","))
                 .ToList();
 
-            foreach(var array in attributeArrays)
+            foreach (var array in attributeArrays)
             {
                 attributes.AddRange(array);
             }
