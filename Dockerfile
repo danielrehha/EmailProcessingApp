@@ -20,6 +20,10 @@ COPY src/Core/EmailProcessingApp.Application/EmailProcessingApp.Application.cspr
 COPY src/Core/EmailProcessingApp.Domain/EmailProcessingApp.Domain.csproj src/Core/EmailProcessingApp.Domain/
 COPY src/Infrastructure/EmailProcessingApp.Infrastructure/EmailProcessingApp.Infrastructure.csproj src/Infrastructure/EmailProcessingApp.Infrastructure/
 COPY src/Infrastructure/EmailProcessingApp.Persistence/EmailProcessingApp.Persistence.csproj src/Infrastructure/EmailProcessingApp.Persistence/
+COPY tests/EmailProcessingApp.Application.UnitTests/EmailProcessingApp.Application.UnitTests.csproj tests/EmailProcessingApp.Application.UnitTests/
+COPY tests/EmailProcessingApp.API.IntegrationTests/EmailProcessingApp.API.IntegrationTests.csproj tests/EmailProcessingApp.API.IntegrationTests/
+COPY tests/EmailProcessingApp.Infrastructure.UnitTests/EmailProcessingApp.Infrastructure.UnitTests.csproj tests/EmailProcessingApp.Infrastructure.UnitTests/
+COPY tests/EmailProcessingApp.Persistence.UnitTests/EmailProcessingApp.Persistence.UnitTests.csproj tests/EmailProcessingApp.Persistence.UnitTests/
 
 RUN dotnet restore
 COPY . .
