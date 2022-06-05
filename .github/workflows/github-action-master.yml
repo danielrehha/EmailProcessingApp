@@ -24,11 +24,10 @@ jobs:
     - name: App Settings Variable Substitution
       uses: microsoft/variable-substitution@v1
       with:
-        files: 'EmailProcessingApp/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
+        files: '${{ github.workspace }}/EmailProcessingApp/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
       env:
         ConnectionStrings.TestSqlConnection: ${{ secrets.CI_TEST_SQL_CON }}
         ConnectionStrings.TestBlob: ${{ secrets.CI_TEST_BLOB_CON }}
-        url: https://github.com/${{github.repository}}
     - name: Build
       run: dotnet build --no-restore
     - name: Test
