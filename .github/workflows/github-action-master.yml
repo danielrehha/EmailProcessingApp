@@ -21,9 +21,16 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: App Settings Variable Substitution
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: '${{env.DOTNET_ROOT}}/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
+      env:
+        ConnectionStrings.TestSqlConnection: ${{ secrets.CI_TEST_SQL_CON }}
+        ConnectionStrings.TestBlob: ${{ secrets.CI_TEST_BLOB_CON }}
     - name: Build
       run: dotnet build --no-restore
-    - name: App Settings Variable Substitution
+    - name: App Settings Variable Substitution2
       uses: microsoft/variable-substitution@v1
       with:
         files: '${{env.DOTNET_ROOT}}/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
