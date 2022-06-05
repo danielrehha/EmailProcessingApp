@@ -28,3 +28,8 @@
 /tests/EmailProcessingApp.Persistence.Tests/obj
 /tests/EmailProcessingApp.Tests.Shared/obj
 /tests/EmailProcessingApp.API.Tests/obj
+/tests/EmailProcessingApp.API.Tests/bin/Debug/net6.0
+/tests/EmailProcessingApp.Application.Tests/bin/Debug/net6.0
+/tests/EmailProcessingApp.Infrastructure.Tests/bin/Debug/net6.0
+/tests/EmailProcessingApp.Persistence.Tests/bin/Debug/net6.0
+/tests/EmailProcessingApp.Tests.Shared/bin/Debug/net6.0
