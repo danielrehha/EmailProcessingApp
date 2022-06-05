@@ -16,7 +16,7 @@ namespace EmailProcessingApp.Infrastructure.Logging
 
         public string ConnectionString()
         {
-            return _configuration.GetConnectionString("Blob");
+            return _configuration.GetConnectionString("BlobConnection");
         }
 
         public string GetContainerName(BlobContainerType containerType)

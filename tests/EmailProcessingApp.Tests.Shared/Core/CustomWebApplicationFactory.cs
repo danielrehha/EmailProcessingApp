@@ -46,7 +46,7 @@ namespace EmailProcessingApp.Tests.Shared.Core
 
                 services.AddDbContext<ApplicationDbContext>(options =>
                 {
-                    var connectionString = Configuration.GetConnectionString("TestSqlConnection");
+                    var connectionString = Configuration.GetConnectionString("SqlConnection");
                     options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0)));
                     options.LogTo(message => Debug.WriteLine(message));
                     options.EnableSensitiveDataLogging();
