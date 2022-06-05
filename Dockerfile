@@ -20,7 +20,7 @@ COPY src/Core/EmailProcessingApp.Application/EmailProcessingApp.Application.cspr
 COPY src/Core/EmailProcessingApp.Domain/EmailProcessingApp.Domain.csproj src/Core/EmailProcessingApp.Domain/
 COPY src/Infrastructure/EmailProcessingApp.Infrastructure/EmailProcessingApp.Infrastructure.csproj src/Infrastructure/EmailProcessingApp.Infrastructure/
 COPY src/Infrastructure/EmailProcessingApp.Persistence/EmailProcessingApp.Persistence.csproj src/Infrastructure/EmailProcessingApp.Persistence/
-COPY tests/EmailProcessingApp.API.Tests/EmailProcessingApp.API.Tests.csproj tests/EmailProcessingApp.API.IntegrationTests/
+COPY tests/EmailProcessingApp.API.Tests/EmailProcessingApp.API.Tests.csproj tests/EmailProcessingApp.API.Tests/
 COPY tests/EmailProcessingApp.Application.Tests/EmailProcessingApp.Application.Tests.csproj tests/EmailProcessingApp.Application.Tests/
 COPY tests/EmailProcessingApp.Infrastructure.Tests/EmailProcessingApp.Infrastructure.Tests.csproj tests/EmailProcessingApp.Infrastructure.Tests/
 COPY tests/EmailProcessingApp.Persistence.Tests/EmailProcessingApp.Persistence.Tests.csproj tests/EmailProcessingApp.Persistence.Tests/
