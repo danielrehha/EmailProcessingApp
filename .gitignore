@@ -23,3 +23,8 @@
 /tests/EmailProcessingApp.Application.UnitTests/obj
 /tests/EmailProcessingApp.Infrastructure.UnitTests/obj
 /tests/EmailProcessingApp.Persistence.UnitTests/obj
+/tests/EmailProcessingApp.Application.Tests/obj
+/tests/EmailProcessingApp.Infrastructure.Tests/obj
+/tests/EmailProcessingApp.Persistence.Tests/obj
+/tests/EmailProcessingApp.Tests.Shared/obj
+/tests/EmailProcessingApp.API.Tests/obj

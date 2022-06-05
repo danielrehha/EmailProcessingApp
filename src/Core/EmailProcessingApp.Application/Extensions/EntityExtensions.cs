@@ -55,20 +55,31 @@ namespace EmailProcessingApp.Application.Extensions
                     return "ResponseEmailBodyContainer";
                 case BlobContainerType.MessageTemplateContainer:
                     return "MessageTemplateContainer";
-                default:
-                    return "Default";
             }
+
+            throw new NotImplementedException(type.ToString());
         }
 
-        public static string ToFileName(this MessageTemplateType type)
+        public static string ToFileKey(this MessageTemplateType type)
         {
             switch (type)
             {
                 case MessageTemplateType.ResponseEmailBody:
-                    return "response-email-template.txt";
-                default:
-                    return "default-template.txt";
+                    return "ResponseEmailBodyTemplate";
             }
+
+            throw new NotImplementedException(type.ToString());
+        }
+
+        public static string ToFilePath(this MessageTemplateType type)
+        {
+            switch (type)
+            {
+                case MessageTemplateType.ResponseEmailBody:
+                    return "Templates\\Message\\response_email_body_template.txt";
+            }
+
+            throw new NotImplementedException(type.ToString());
         }
 
         public static string ToProblemDetails(this ValidationException ex)

@@ -48,16 +48,48 @@ namespace EmailProcessingApp.Infrastructure.Logging
 
             var blobClient = new BlobClient(_logServiceManager.ConnectionString(), targetContainerName, blobName);
 
-            if (!await blobClient.ExistsAsync())
+            var resultStream = await blobClient.DownloadStreamingAsync();
+
+            using (var memoryStream = new MemoryStream())
             {
-                var content = "sample data";
-                var bytes = Encoding.UTF8.GetBytes(content);
-                var stream = new MemoryStream(bytes);
+                await resultStream.Value.Content.CopyToAsync(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+        public async Task<byte[]> DownloadBlobAsync(string blobName, BlobContainerType containerType, string localFilePath)
+        {
+            var client = new BlobServiceClient(_logServiceManager.ConnectionString());
+
+            var targetContainerName = _logServiceManager.GetContainerName(containerType);
+
+            var container = client.GetBlobContainerClient(targetContainerName);
+
+            await container.CreateIfNotExistsAsync();
+
+            var blobClient = new BlobClient(_logServiceManager.ConnectionString(), targetContainerName, blobName);
+
+            if(!await blobClient.ExistsAsync())
+            {
+                var fileBytes = await File.ReadAllBytesAsync(localFilePath);
+                var stream = new MemoryStream(fileBytes);
                 await blobClient.UploadAsync(stream);
-                return bytes;
+                return fileBytes;
             }
 
             var resultStream = await blobClient.DownloadStreamingAsync();
+
+            if (File.Exists(localFilePath))
+            {
+                var remoteFileProperties = await blobClient.GetPropertiesAsync();
+                var localFileBytes = await File.ReadAllBytesAsync(localFilePath);
+                if (remoteFileProperties.Value.ContentLength != localFileBytes.Length)
+                {
+                    var memoryStream = new MemoryStream();
+                    resultStream.Value.Content.CopyTo(memoryStream);
+                    await File.WriteAllBytesAsync(localFilePath, memoryStream.ToArray());
+                }
+            }
 
             using (var memoryStream = new MemoryStream())
             {
