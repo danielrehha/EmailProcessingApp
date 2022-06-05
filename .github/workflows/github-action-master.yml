@@ -38,12 +38,14 @@ jobs:
           username: ${{ secrets.PROD_ACR_USERNAME }}
           password: ${{ secrets.PROD_ACR_PASSWORD }}
       - name: Build & Push
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3.0.0
         with:
           push: true
           build-args: |
             version=${{ github.run_number }}
+            SQLCONNECTION="${{ secrets.PROD_SQL_CON }}"
+            BLOBCONNECTION="${{ secrets.PROD_BLOB_CON }}"
+            HEADERAUTHKEY="${{ secrets.PROD_HEADER_AUTH_KEY }}"
           tags: | 
             ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:release
-            ${{ env.IMAGE_NAME }}.v.${{ github.run_number }}
-            ${{ env.IMAGE_NAME }}
+            ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}.v.${{ github.run_number }}
