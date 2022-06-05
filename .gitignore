@@ -33,3 +33,5 @@
 /tests/EmailProcessingApp.Infrastructure.Tests/bin/Debug/net6.0
 /tests/EmailProcessingApp.Persistence.Tests/bin/Debug/net6.0
 /tests/EmailProcessingApp.Tests.Shared/bin/Debug/net6.0
+/tests/EmailProcessingApp.Tests.Shared/appsettings.Development.json
+/tests/EmailProcessingApp.Tests.Shared/test_appsettings.Development.json

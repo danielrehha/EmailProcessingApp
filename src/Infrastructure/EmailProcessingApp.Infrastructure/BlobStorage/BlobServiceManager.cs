@@ -3,7 +3,7 @@ using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Application.Extensions;
 using Microsoft.Extensions.Configuration;
 
-namespace EmailProcessingApp.Infrastructure.Logging
+namespace EmailProcessingApp.Infrastructure.BlobStorage
 {
     public class BlobServiceManager : IBlobServiceManager
     {

@@ -29,11 +29,23 @@ namespace EmailProcessingApp.Infrastructure.Static
                 .GetSection(fileNameKey)
                 .Value;
 
-            var localFilePath = $"Templates\\Message\\{fileName}";
+            if (File.Exists(fileName))
+            {
+                return await File.ReadAllTextAsync(fileName);
+            }
 
-            var fileBytes = await _blobService.DownloadBlobAsync(fileName, BlobContainerType.MessageTemplateContainer, localFilePath);
+            var remoteFileBytes = await _blobService.DownloadBlobAsync(fileName, BlobContainerType.MessageTemplateContainer);
 
-            return Encoding.UTF8.GetString(fileBytes);
+            if (remoteFileBytes == null)
+            {
+                throw new OperationCanceledException($"Could not find message template '{Enum.GetName(typeof(MessageTemplateType), type)}'.");
+            }
+
+            await File.WriteAllBytesAsync(fileName, remoteFileBytes);
+
+            var remoteFileContent = Encoding.UTF8.GetString(remoteFileBytes ?? Array.Empty<byte>());
+
+            return remoteFileContent;
         }
     }
 }

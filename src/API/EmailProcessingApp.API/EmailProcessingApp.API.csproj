@@ -24,10 +24,4 @@
     <ProjectReference Include="..\..\Infrastructure\EmailProcessingApp.Persistence\EmailProcessingApp.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Templates\Message\response_email_body_template.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

@@ -2,6 +2,7 @@ using EmailProcessingApp.API.Helpers;
 using EmailProcessingApp.API.Helpers.Contracts;
 using EmailProcessingApp.API.Middlewares;
 using EmailProcessingApp.Application;
+using EmailProcessingApp.Application.Contract.Logging;
 using EmailProcessingApp.Infrastructure;
 using EmailProcessingApp.Persistence;
 using System.Text.Json.Serialization;
@@ -17,6 +18,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(configuration);
 builder.Services.AddInfrastructureServices();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<ILogger, Logger<ApplicationLog>>();
 
 var app = builder.Build();
 
@@ -38,3 +40,5 @@ app.UseMiddleware<HeaderAuthenticationMiddleware>();
 app.UseMiddleware<ExceptionHandlerMiddleware>();
 
 app.Run();
+
+public partial class Program { }

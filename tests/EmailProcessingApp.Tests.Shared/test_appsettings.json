@@ -1,8 +1,8 @@
 {
   "Logging": {
     "LogLevel": {
-      "Default": "Error",
-      "Microsoft": "Warning"
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
     }
   },
   "AllowedHosts": "*",
@@ -11,7 +11,7 @@
     "BlobConnection": ""
   },
   "Secrets": {
-    "HeaderAuthKey": "1234"
+    "HeaderAuthKey": "EpaAdmin!"
   },
   "Configuration": {
     "Blob": {
@@ -21,7 +21,7 @@
         "MessageTemplateContainer": "message-template-container-tests"
       },
       "Templates": {
-        "ResponseEmailTemplate": "response-email-body-template.txt"
+        "ResponseEmailBodyTemplate": "response_email_body_template.txt"
       }
     }
   }

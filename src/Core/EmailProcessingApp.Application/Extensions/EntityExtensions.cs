@@ -71,17 +71,6 @@ namespace EmailProcessingApp.Application.Extensions
             throw new NotImplementedException(type.ToString());
         }
 
-        public static string ToFilePath(this MessageTemplateType type)
-        {
-            switch (type)
-            {
-                case MessageTemplateType.ResponseEmailBody:
-                    return "Templates\\Message\\response_email_body_template.txt";
-            }
-
-            throw new NotImplementedException(type.ToString());
-        }
-
         public static string ToProblemDetails(this ValidationException ex)
         {
             var details = new

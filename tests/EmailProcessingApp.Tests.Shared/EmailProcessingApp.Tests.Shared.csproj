@@ -12,11 +12,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\API\EmailProcessingApp.API\EmailProcessingApp.API.csproj" />
     <ProjectReference Include="..\..\src\Infrastructure\EmailProcessingApp.Persistence\EmailProcessingApp.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
+    <None Update="test_appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="test_appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

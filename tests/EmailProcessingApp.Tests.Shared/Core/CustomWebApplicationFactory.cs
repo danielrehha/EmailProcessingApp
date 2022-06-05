@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
 namespace EmailProcessingApp.Tests.Shared.Core
@@ -12,15 +13,21 @@ namespace EmailProcessingApp.Tests.Shared.Core
     {
         //private readonly StreamWriter _logStream = new StreamWriter("integration_test_logs.txt", append: true);
         public IConfiguration Configuration { get; private set; }
-        public DbContext Context { get; set; }
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             var directory = Directory.GetCurrentDirectory();
-            var settingsFile = "appsettings.json";
+            var settingsFile = "test_appsettings.json";
+            var developmentSettingsFile = "test_appsettings.Development.json";
 
             builder.ConfigureAppConfiguration(conf =>
             {
-                Configuration = conf.AddJsonFile(Path.Combine(directory, settingsFile)).Build();
+                if(!File.Exists(developmentSettingsFile))
+                {
+                    Configuration = conf.AddJsonFile(Path.Combine(directory, settingsFile)).Build();
+                    return;
+                }
+
+                Configuration = conf.AddJsonFile(Path.Combine(directory, developmentSettingsFile)).Build();
             });
 
             builder.ConfigureServices(services =>
@@ -29,15 +36,17 @@ namespace EmailProcessingApp.Tests.Shared.Core
                     d => d.ServiceType ==
                         typeof(DbContextOptions<ApplicationDbContext>));
 
-                var configurationDescriptor = services.SingleOrDefault(
-                    d => d.ServiceType == typeof(IConfiguration));
+                var configurationDescriptorList = new List<ServiceDescriptor>();
+
+                configurationDescriptorList.AddRange(services.Where(
+                    d => d.ServiceType == typeof(IConfiguration)).ToList());
 
                 if (descriptor != null)
                 {
                     services.Remove(descriptor);
                 }
 
-                if (configurationDescriptor != null)
+                foreach(var configurationDescriptor in configurationDescriptorList)
                 {
                     services.Remove(configurationDescriptor);
                 }
