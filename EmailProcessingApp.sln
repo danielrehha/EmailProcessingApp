@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.API", "src\API\EmailProcessingApp.API\EmailProcessingApp.API.csproj", "{F81DE5FD-E540-4BDA-BB12-0C781BA11A4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessingApp.API", "src\API\EmailProcessingApp.API\EmailProcessingApp.API.csproj", "{F81DE5FD-E540-4BDA-BB12-0C781BA11A4D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F8B3CA35-5B1E-47CF-9BEE-96045D453A61}"
 EndProject
@@ -15,13 +15,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{805D492D-4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{D84BC577-E76F-4798-B572-21DF22B76E40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Domain", "src\Core\EmailProcessingApp.Domain\EmailProcessingApp.Domain.csproj", "{5DDFD3A3-1141-41F6-8FA4-F1C271D531A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessingApp.Domain", "src\Core\EmailProcessingApp.Domain\EmailProcessingApp.Domain.csproj", "{5DDFD3A3-1141-41F6-8FA4-F1C271D531A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Application", "src\Core\EmailProcessingApp.Application\EmailProcessingApp.Application.csproj", "{20FD8470-93FA-4FFC-A1C1-56B926121BC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessingApp.Application", "src\Core\EmailProcessingApp.Application\EmailProcessingApp.Application.csproj", "{20FD8470-93FA-4FFC-A1C1-56B926121BC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Infrastructure", "src\Infrastructure\EmailProcessingApp.Infrastructure\EmailProcessingApp.Infrastructure.csproj", "{D0B0054D-0509-46ED-A146-A672697C0DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessingApp.Infrastructure", "src\Infrastructure\EmailProcessingApp.Infrastructure\EmailProcessingApp.Infrastructure.csproj", "{D0B0054D-0509-46ED-A146-A672697C0DC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Persistence", "src\Infrastructure\EmailProcessingApp.Persistence\EmailProcessingApp.Persistence.csproj", "{3E3BBFE4-4613-48F0-8269-2BD82080A912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailProcessingApp.Persistence", "src\Infrastructure\EmailProcessingApp.Persistence\EmailProcessingApp.Persistence.csproj", "{3E3BBFE4-4613-48F0-8269-2BD82080A912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.API.IntegrationTests", "tests\EmailProcessingApp.API.IntegrationTests\EmailProcessingApp.API.IntegrationTests.csproj", "{7C5617C1-3D67-4934-89E2-7D950E4B3871}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Application.UnitTests", "tests\EmailProcessingApp.Application.UnitTests\EmailProcessingApp.Application.UnitTests.csproj", "{A9324FF9-9523-469C-896C-BE525EFBA108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Infrastructure.UnitTests", "tests\EmailProcessingApp.Infrastructure.UnitTests\EmailProcessingApp.Infrastructure.UnitTests.csproj", "{B8342B25-98EA-464D-9179-58BE9E3B3C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailProcessingApp.Persistence.UnitTests", "tests\EmailProcessingApp.Persistence.UnitTests\EmailProcessingApp.Persistence.UnitTests.csproj", "{B050DF93-17DB-490F-9C91-CA40DE616D70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,6 +57,22 @@ Global
 		{3E3BBFE4-4613-48F0-8269-2BD82080A912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E3BBFE4-4613-48F0-8269-2BD82080A912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E3BBFE4-4613-48F0-8269-2BD82080A912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C5617C1-3D67-4934-89E2-7D950E4B3871}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C5617C1-3D67-4934-89E2-7D950E4B3871}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C5617C1-3D67-4934-89E2-7D950E4B3871}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C5617C1-3D67-4934-89E2-7D950E4B3871}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9324FF9-9523-469C-896C-BE525EFBA108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9324FF9-9523-469C-896C-BE525EFBA108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9324FF9-9523-469C-896C-BE525EFBA108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9324FF9-9523-469C-896C-BE525EFBA108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8342B25-98EA-464D-9179-58BE9E3B3C14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8342B25-98EA-464D-9179-58BE9E3B3C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8342B25-98EA-464D-9179-58BE9E3B3C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8342B25-98EA-464D-9179-58BE9E3B3C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B050DF93-17DB-490F-9C91-CA40DE616D70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B050DF93-17DB-490F-9C91-CA40DE616D70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B050DF93-17DB-490F-9C91-CA40DE616D70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B050DF93-17DB-490F-9C91-CA40DE616D70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +86,10 @@ Global
 		{20FD8470-93FA-4FFC-A1C1-56B926121BC0} = {805D492D-49D7-42D1-9600-1E788AEB2593}
 		{D0B0054D-0509-46ED-A146-A672697C0DC4} = {D84BC577-E76F-4798-B572-21DF22B76E40}
 		{3E3BBFE4-4613-48F0-8269-2BD82080A912} = {D84BC577-E76F-4798-B572-21DF22B76E40}
+		{7C5617C1-3D67-4934-89E2-7D950E4B3871} = {CE01D347-9E2F-4AD4-B544-80E52DA8F1F6}
+		{A9324FF9-9523-469C-896C-BE525EFBA108} = {CE01D347-9E2F-4AD4-B544-80E52DA8F1F6}
+		{B8342B25-98EA-464D-9179-58BE9E3B3C14} = {CE01D347-9E2F-4AD4-B544-80E52DA8F1F6}
+		{B050DF93-17DB-490F-9C91-CA40DE616D70} = {CE01D347-9E2F-4AD4-B544-80E52DA8F1F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84C59BEB-ABC3-4400-B7F2-5CA0E4498DE7}

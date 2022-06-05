@@ -19,3 +19,7 @@
 /src/Infrastructure/EmailProcessingApp.Persistence/bin/Debug/net6.0
 /src/Infrastructure/EmailProcessingApp.Persistence/obj/Debug/net6.0
 /src/Infrastructure/EmailProcessingApp.Persistence/obj
+/tests/EmailProcessingApp.API.IntegrationTests/obj
+/tests/EmailProcessingApp.Application.UnitTests/obj
+/tests/EmailProcessingApp.Infrastructure.UnitTests/obj
+/tests/EmailProcessingApp.Persistence.UnitTests/obj
