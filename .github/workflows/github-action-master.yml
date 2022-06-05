@@ -24,7 +24,7 @@ jobs:
     - name: App Settings Variable Substitution
       uses: microsoft/variable-substitution@v1
       with:
-        files: '${{env.DOTNET_ROOT}}/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
+        files: '${{env.DOTNET_ROOT}}/EmailProcessingApp/tests/EmailProcessingApp.Tests.Shared/appsettings.json'
       env:
         ConnectionStrings.TestSqlConnection: ${{ secrets.CI_TEST_SQL_CON }}
         ConnectionStrings.TestBlob: ${{ secrets.CI_TEST_BLOB_CON }}
