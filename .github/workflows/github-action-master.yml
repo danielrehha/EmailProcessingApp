@@ -28,6 +28,7 @@ jobs:
       env:
         ConnectionStrings.SqlConnection: ${{ secrets.CI_TEST_SQL_CON }}
         ConnectionStrings.BlobConnection: ${{ secrets.CI_TEST_BLOB_CON }}
+        Secrets.HeaderAuthKey: ${{ secrets.CI_TEST_HEADER_AUTH_KEY }}
     - name: Build
       run: dotnet build --no-restore
     - name: Test
