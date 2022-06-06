@@ -19,19 +19,15 @@ namespace EmailProcessingApp.Infrastructure.Tests.ComponentTests
     public class BlobServiceTests : IClassFixture<CustomWebApplicationFactory<Program>>, IDisposable
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        private readonly HttpClient _client;
         private readonly BlobService _blobService;
-        private readonly BlobServiceManager _blobServiceManager;
 
         public BlobServiceTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
-            _client = _factory.CreateDefaultClient(new Uri("https://localhost/"));
 
             var blobServiceInstance = _factory.Services.GetService(typeof(IBlobServiceManager));
 
             _blobService = new BlobService((IBlobServiceManager)blobServiceInstance);
-            _blobServiceManager = new BlobServiceManager(_factory.Configuration);
         }
 
         [Fact]

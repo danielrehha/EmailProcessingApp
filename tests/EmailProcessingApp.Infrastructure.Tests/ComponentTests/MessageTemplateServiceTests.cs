@@ -16,13 +16,11 @@ namespace EmailProcessingApp.Infrastructure.Tests.ComponentTests
     public class MessageTemplateServiceTests : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly CustomWebApplicationFactory<Program> _factory;
-        private readonly HttpClient _client;
         private readonly MessageTemplateService _messageTemplateService;
 
         public MessageTemplateServiceTests(CustomWebApplicationFactory<Program> factory)
         {
             _factory = factory;
-            _client = _factory.CreateDefaultClient(new Uri("https://localhost/"));
 
             var blobServiceInstance = _factory.Services.GetService(typeof(IBlobService));
 
