@@ -4,7 +4,6 @@ using EmailProcessingApp.Application.Contract.Static;
 using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Domain.Models;
 using MediatR;
-using System.Diagnostics;
 using System.Text;
 
 namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataCommand.CreateResponseEmailCommandNamespace
@@ -37,7 +36,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
             var messageBody = messageTemplate.Replace("{}", string.Join(",", request.Attributes));
 
-            await _repository.AddAsync(new ResponseEmail() { Email = request.Email, EmailBody = Encoding.UTF8.GetBytes(messageBody) });
+            await _repository.AddAsync(new ResponseEmail() { Email = request.Email, EmailBody = Encoding.UTF8.GetBytes(messageBody), IsSent = false });
 
             var blobName = $"{DateTime.Now.ToShortDateString().Replace("/", "-")}_{request.Email}.txt";
             await _blobService.AppendToBlobAsync(blobName, messageBody, BlobContainerType.EmailBodyContainer);

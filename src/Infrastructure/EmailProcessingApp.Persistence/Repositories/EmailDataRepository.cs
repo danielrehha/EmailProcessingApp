@@ -25,15 +25,15 @@ namespace EmailProcessingApp.Persistence.Repositories
             return result;
         }
 
-        public async Task<bool> IsAttributeListUniqueAsync(EmailDataDto dto)
+        public async Task<bool> ValidateAttributeListAsync(string email, List<string> attributes)
         {
             var emailDataList = await _context.EmailData
-                .Where(x => x.Email == dto.Email && x.CreationDate.Date == DateTime.Now.Date)
+                .Where(x => x.Email == email && x.CreationDate.Date == DateTime.Now.Date)
                 .ToListAsync();
 
-            foreach(var email in emailDataList)
+            foreach(var emailData in emailDataList)
             {
-                if(email.Attributes.Split(",").Any(e => dto.Attributes.Contains(e)))
+                if(emailData.Attributes.Split(",").Any(e => attributes.Contains(e)))
                 {
                     return false;
                 }

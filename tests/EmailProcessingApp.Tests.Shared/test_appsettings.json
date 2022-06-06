@@ -11,7 +11,7 @@
     "BlobConnection": ""
   },
   "Secrets": {
-    "HeaderAuthKey": "EpaAdmin!"
+    "HeaderAuthKey": ""
   },
   "Configuration": {
     "Blob": {
