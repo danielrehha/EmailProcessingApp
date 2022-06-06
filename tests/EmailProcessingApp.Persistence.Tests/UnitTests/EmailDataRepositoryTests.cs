@@ -6,24 +6,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Priority;
 
 namespace EmailProcessingApp.Persistence.Tests.UnitTests
 {
-    [Collection("Parallel")]
+    [Collection("Serial")]
+    [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
     public class EmailDataRepositoryTests
     {
         private const string _testEmailAddress = "test@test.com";
 
         [Fact]
+        [Priority(0)]
         public async Task Should_Validate_Attribute_List()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "EPA_DB")
+                .UseInMemoryDatabase(databaseName: "EPA_DB-0")
                 .Options;
 
             using (var context = new ApplicationDbContext(options))
             {
-                context.EmailData.Add(new EmailData
+                await context.EmailData.AddAsync(new EmailData
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
@@ -43,10 +46,11 @@ namespace EmailProcessingApp.Persistence.Tests.UnitTests
         }
 
         [Fact]
+        [Priority(1)]
         public async Task Should_Not_Validate_Attribute_List()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "EPA_DB")
+                .UseInMemoryDatabase(databaseName: "EPA_DB-1")
                 .Options;
 
             using (var context = new ApplicationDbContext(options))
@@ -71,29 +75,30 @@ namespace EmailProcessingApp.Persistence.Tests.UnitTests
         }
 
         [Fact]
+        [Priority(2)]
         public async Task Should_Return_Email_Data_By_Range()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase(databaseName: "EPA_DB")
+                .UseInMemoryDatabase(databaseName: "EPA_DB-2")
                 .Options;
 
             using (var context = new ApplicationDbContext(options))
             {
-                context.EmailData.Add(new EmailData
+                await context.EmailData.AddAsync(new EmailData
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
                     Attributes = "first",
                     CreationDate = DateTime.Now
                 });
-                context.EmailData.Add(new EmailData
+                await context.EmailData.AddAsync(new EmailData
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
                     Attributes = "second",
                     CreationDate = DateTime.Now.Subtract(TimeSpan.FromDays(1))
                 });
-                context.EmailData.Add(new EmailData
+                await context.EmailData.AddAsync(new EmailData
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,

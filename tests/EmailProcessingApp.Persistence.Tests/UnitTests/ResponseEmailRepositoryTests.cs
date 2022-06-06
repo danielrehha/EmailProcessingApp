@@ -5,15 +5,18 @@ using System;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using Xunit.Priority;
 
 namespace EmailProcessingApp.Persistence.Tests.UnitTests
 {
-    [Collection("Parallel")]
+    [Collection("Serial")]
+    [TestCaseOrderer(PriorityOrderer.Name, PriorityOrderer.Assembly)]
     public class ResponseEmailRepositoryTests
     {
         private const string _testEmailAddress = "test@test.com";
 
         [Fact]
+        [Priority(0)]
         public async Task Should_Return_Response_Email()
         {
             var options = new DbContextOptionsBuilder<ApplicationDbContext>()
@@ -22,7 +25,7 @@ namespace EmailProcessingApp.Persistence.Tests.UnitTests
 
             using (var context = new ApplicationDbContext(options))
             {
-                context.SendEmails.Add(new ResponseEmail
+                await context.SendEmails.AddAsync(new ResponseEmail
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
@@ -30,7 +33,7 @@ namespace EmailProcessingApp.Persistence.Tests.UnitTests
                     IsSent = false,
                     CreationDate = DateTime.Now
                 });
-                context.SendEmails.Add(new ResponseEmail
+                await context.SendEmails.AddAsync(new ResponseEmail
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
@@ -38,7 +41,7 @@ namespace EmailProcessingApp.Persistence.Tests.UnitTests
                     IsSent = false,
                     CreationDate = DateTime.Now.AddDays(1)
                 });
-                context.SendEmails.Add(new ResponseEmail
+                await context.SendEmails.AddAsync(new ResponseEmail
                 {
                     Key = Guid.NewGuid(),
                     Email = _testEmailAddress,
