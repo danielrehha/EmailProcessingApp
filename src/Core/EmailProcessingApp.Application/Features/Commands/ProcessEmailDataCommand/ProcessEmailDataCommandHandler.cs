@@ -30,14 +30,18 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
             var validator = new ProcessEmailDataCommandValidator(_repository);
             var validationResult = await validator.ValidateAsync(request);
 
+            // Validating client request and throwing exception if there are validation errors
             validationResult.Resolve(response);
 
+            // Adding email data entry to the table
             await _repository.AddAsync(request.EmailDataDto.ToEmailData());
 
+            // Storing client payload to blob storage
             var blobName = request.EmailDataDto.ToBlobName();
             var content = request.EmailDataDto.ToLogData(response);
             await _blobService.AppendToBlobAsync(blobName, content, BlobContainerType.EmailLogContainer);
 
+            // Handling response email
             await _mediator.Send(new HandleResponseEmailCommand(request.EmailDataDto));
 
             return response;

@@ -25,19 +25,23 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
         {
             var response = new CreateResponseEmailCommandResponse();
 
+            // Fetching response email for the current date
             var email = await _repository.FindByEmailAndDateAsync(request.Email, DateTime.Now);
 
+            // If we already created one previously we return and don't do anything
             if (email != null)
             {
                 return response;
             }
 
+            // We get the custom message template from the appropriate service and the format it correctly
             var messageTemplate = await _messageTemplateService.GetMessageTemplateAsync(MessageTemplateType.ResponseEmailBody);
-
             var messageBody = messageTemplate.Replace("{}", string.Join(",", request.Attributes));
 
+            // Inserting the response email in the sendemails table
             await _repository.AddAsync(new ResponseEmail() { Email = request.Email, EmailBody = Encoding.UTF8.GetBytes(messageBody), IsSent = false });
 
+            // Storing the response email to blob storage also in the appropriate container
             var blobName = $"{DateTime.Now.ToShortDateString().Replace("/", "-")}_{request.Email}.txt";
             await _blobService.AppendToBlobAsync(blobName, messageBody, BlobContainerType.EmailBodyContainer);
 

@@ -21,19 +21,20 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
         {
             var response = new HandleResponseEmailCommandResponse();
 
+            // Fetching recorded email data for the current date
             var result = await _repository.GetRangeByEmailAddressAsync(request.EmailDataDto.Email, DateTime.Now, DateTime.Now);
 
+            // Converting attributes for rule assertion
             var attributes = new List<string>();
-
             var attributeArrays = result
                 .Select(e => e.Attributes.Split(","))
                 .ToList();
-
             foreach (var array in attributeArrays)
             {
                 attributes.AddRange(array);
             }
 
+            // If there are at least 10 unique attributes we create a response email
             if (attributes.Distinct().Count() >= 10)
             {
                 await _mediator.Send(new CreateResponseEmailCommand(request.EmailDataDto.Email, attributes.Take(10).ToList()));

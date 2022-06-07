@@ -26,7 +26,8 @@ namespace EmailProcessingApp.API.Tests.IntegrationTests
         public async Task Should_Process_Email_Data_With_No_Response_Email()
         {
             /*
-             *  Normally I would write end-to-end integration tests covering every possible scenario but I think that is a bit out of scope for this test
+             *  Normally I would write end-to-end integration tests utitlizing real services and
+             *  covering every possible scenario, but I think that is a bit out of scope for the purpose of this test
              */
         }
 

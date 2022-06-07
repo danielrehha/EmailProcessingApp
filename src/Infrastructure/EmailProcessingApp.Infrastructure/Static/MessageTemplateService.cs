@@ -22,6 +22,7 @@ namespace EmailProcessingApp.Infrastructure.Static
         {
             var fileNameKey = type.ToFileKey();
 
+            // Getting the message template file name from configuration
             var fileName = _configuration
                 .GetSection("Configuration")
                 .GetSection("Blob")
@@ -29,21 +30,25 @@ namespace EmailProcessingApp.Infrastructure.Static
                 .GetSection(fileNameKey)
                 .Value;
 
+            // If the file already exists locally we don't fetch it from blob storage again but return it
             if (File.Exists(fileName))
             {
                 return await File.ReadAllTextAsync(fileName);
             }
 
+            // Download the template file from blob storage
             var remoteFileBytes = await _blobService.DownloadBlobAsync(fileName, BlobContainerType.MessageTemplateContainer);
 
+            // If there is neither a file locally or in the remote storage we throw an exception
             if (remoteFileBytes == null)
             {
                 throw new OperationCanceledException($"Could not find message template '{Enum.GetName(typeof(MessageTemplateType), type)}'.");
             }
 
+            // Save the file to local storage for future usage
             await File.WriteAllBytesAsync(fileName, remoteFileBytes);
 
-            var remoteFileContent = Encoding.UTF8.GetString(remoteFileBytes ?? Array.Empty<byte>());
+            var remoteFileContent = Encoding.UTF8.GetString(remoteFileBytes);
 
             return remoteFileContent;
         }
