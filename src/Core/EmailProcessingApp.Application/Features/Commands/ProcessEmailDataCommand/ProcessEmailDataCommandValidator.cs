@@ -12,10 +12,11 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
         {
             _repository = repository;
 
+            RuleFor(e => e).Must((e) => e.EmailDataDto.Attributes.Distinct().Count() == e.EmailDataDto.Attributes.Count).WithMessage("Duplicate attribute values are not allowed.");
             RuleFor(e => e).Must((e) => EmailValidator.Validate(e.EmailDataDto.Email)).WithMessage("Provided email address is not in the valid format.");
             RuleFor(e => e).MustAsync(IsUniqueAsync).WithMessage("The unique key provided is already present in the database!");
             RuleFor(e => e).MustAsync(IsAttributeListUnique).WithMessage($"One or more of the provided attributes have been already saved for {DateTime.UtcNow.ToShortDateString()}.");
-        
+            
             // ... define additional client request constraints if required ...
         }
 

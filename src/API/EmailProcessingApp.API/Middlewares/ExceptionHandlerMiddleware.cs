@@ -30,7 +30,7 @@ namespace EmailProcessingApp.API.Middlewares
                 _logger.LogError(ex.Message, ex);
 
                 context.Response.StatusCode = 500;
-                await context.Response.WriteAsync("Internal server error.");
+                await context.Response.WriteAsync(ex.Message);
             }
         }
     }
