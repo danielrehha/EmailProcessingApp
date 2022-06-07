@@ -2,8 +2,6 @@
 using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Infrastructure.Static;
 using EmailProcessingApp.Tests.Shared.Core;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Priority;

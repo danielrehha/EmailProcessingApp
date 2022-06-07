@@ -22,6 +22,7 @@ namespace EmailProcessingApp.API.Controllers
         [HttpPost]
         public async Task<ActionResult<ProcessEmailDataCommandResponse>> ProcessPayloadAsync([FromBody] EmailDataDto dto)
         {
+            // Sending new event to IMediator and handling it in the corresponding handler
             var result = await _mediator.Send(new ProcessEmailDataCommand(dto));
 
             return _responseManager.MapActionResult(result, noContent: true);

@@ -1,6 +1,6 @@
 ﻿namespace EmailProcessingApp.Application.Dto
 {
-    public class EmailDataDto
+    public class EmailDataDto : BaseDto
     {
         public Guid Key { get; set; }
         public string Email { get; set; }

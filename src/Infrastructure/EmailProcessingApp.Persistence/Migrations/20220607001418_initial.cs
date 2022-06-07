@@ -30,7 +30,7 @@ namespace EmailProcessingApp.Persistence.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "ResponseEmail",
+                name: "SendEmails",
                 columns: table => new
                 {
                     Key = table.Column<Guid>(type: "char(36)", nullable: false, collation: "ascii_general_ci"),
@@ -42,7 +42,7 @@ namespace EmailProcessingApp.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResponseEmail", x => x.Key);
+                    table.PrimaryKey("PK_SendEmails", x => x.Key);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
         }
@@ -53,7 +53,7 @@ namespace EmailProcessingApp.Persistence.Migrations
                 name: "EmailData");
 
             migrationBuilder.DropTable(
-                name: "ResponseEmail");
+                name: "SendEmails");
         }
     }
 }

@@ -1,16 +1,15 @@
-﻿using AutoMapper;
-using EmailProcessingApp.Application.Contract.Logging;
+﻿using EmailProcessingApp.Application.Contract.Logging;
 using EmailProcessingApp.Application.Contract.Persistence;
 using EmailProcessingApp.Application.Enums;
 using EmailProcessingApp.Application.Extensions;
 using EmailProcessingApp.Application.Features.Commands.ProcessEmailDataCommand.HandleEmailResponseCommand;
 using MediatR;
-using Newtonsoft.Json;
-using System.Diagnostics;
-using System.Net;
 
 namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataCommand
 {
+    /// <summary>
+    /// Command handler for process email event sent from controller endpoint.
+    /// </summary>
     public class ProcessEmailDataCommandHandler : IRequestHandler<ProcessEmailDataCommand, ProcessEmailDataCommandResponse>
     {
         private readonly IEmailDataRepository _repository;

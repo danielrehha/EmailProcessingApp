@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace EmailProcessingApp.Application.Extensions
 {
-    public static class EntityExtensions
+    public static class ApplicationExtensionMethods
     {
         public static EmailData ToEmailData(this EmailDataDto dto)
         {
@@ -30,7 +30,13 @@ namespace EmailProcessingApp.Application.Extensions
             return dto;
         }
 
-        public static string ToLogData(this EmailDataDto dto, BaseResponse response)
+        /// <summary>
+        /// Converts incoming client payload to formatted log data, including validation results.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <param name="response"></param>
+        /// <returns></returns>
+        public static string ToLogData(this BaseDto dto, BaseResponse response)
         {
             var logData = new
             {
@@ -45,6 +51,12 @@ namespace EmailProcessingApp.Application.Extensions
             return DateTime.Now.ToShortDateString().Replace("/", "-") + "_" + dto.Email + ".txt";
         }
 
+        /// <summary>
+        /// Returns appsettings.json container entry key. Throws exception if entry is not present in the file.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static string ToContainerConfigurationKey(this BlobContainerType type)
         {
             switch (type)
@@ -60,6 +72,12 @@ namespace EmailProcessingApp.Application.Extensions
             throw new NotImplementedException(type.ToString());
         }
 
+        /// <summary>
+        /// Returns appsettings.json file entry key. Throws exception if entry is not present in the file.
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
         public static string ToFileKey(this MessageTemplateType type)
         {
             switch (type)

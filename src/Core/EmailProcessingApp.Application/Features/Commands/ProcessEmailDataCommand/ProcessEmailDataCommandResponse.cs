@@ -4,6 +4,6 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 {
     public class ProcessEmailDataCommandResponse : ClientCommandResponse
     {
-
+        
     }
 }

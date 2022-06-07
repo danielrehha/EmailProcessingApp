@@ -1,5 +1,9 @@
 ﻿namespace EmailProcessingApp.Application.Contract.Persistence
 {
+    /// <summary>
+    /// Contract for base repository operations.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IAsyncRepository<T> where T : class
     {
         Task<IReadOnlyList<T>> QueryAllAsync();
