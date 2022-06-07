@@ -18,7 +18,7 @@
       "Containers": {
         "EmailDataPayloadContainer": "email-log-container-tests",
         "ResponseEmailBodyContainer": "response-email-body-container-tests",
-        "MessageTemplateContainer": "message-template-container-tests"
+        "MessageTemplateContainer": "message-template-container"
       },
       "Templates": {
         "ResponseEmailBodyTemplate": "response_email_body_template.txt"
