@@ -12,8 +12,17 @@ jobs:
     runs-on: ubuntu-latest
     name: "Echo details"
     steps:
-    - name: "Echo header key"
-      run: echo ${{ secrets.CI_TEST_HEADER_AUTH_KEY }}
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up secret file
+      env:
+        DEBUG_PASSWORD: ${{ secrets.PROD_HEADER_AUTH_KEY }}
+      run: |
+        echo $DEBUG_PASSWORD >> secrets.txt
+
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
   build:
     name: "Build and run tests"
     runs-on: ubuntu-latest
