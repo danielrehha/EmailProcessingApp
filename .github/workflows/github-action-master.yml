@@ -50,9 +50,9 @@ jobs:
           push: true
           build-args: |
             version=${{ github.run_number }}
-            SQLCONNECTION="${{ secrets.PROD_SQL_CON }}"
-            BLOBCONNECTION="${{ secrets.PROD_BLOB_CON }}"
-            HEADERAUTHKEY="${{ secrets.PROD_HEADER_AUTH_KEY }}"
+            SQLCONNECTION=${{ secrets.PROD_SQL_CON }}
+            BLOBCONNECTION=${{ secrets.PROD_BLOB_CON }}
+            HEADERAUTHKEY=${{ secrets.PROD_HEADER_AUTH_KEY }}
           tags: | 
             ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:release
             ${{ secrets.PROD_ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:release.v.${{ github.run_number }}
