@@ -38,7 +38,7 @@ namespace EmailProcessingApp.Application.Features.Commands.ProcessEmailDataComma
 
             // Storing client payload to blob storage
             var blobName = request.EmailDataDto.ToBlobName();
-            var content = request.EmailDataDto.ToLogData(response);
+            var content = request.EmailDataDto.ToLogData();
             await _blobService.AppendToBlobAsync(blobName, content, BlobContainerType.EmailLogContainer);
 
             // Handling response email
