@@ -36,14 +36,9 @@ namespace EmailProcessingApp.Application.Extensions
         /// <param name="dto"></param>
         /// <param name="response"></param>
         /// <returns></returns>
-        public static string ToLogData(this BaseDto dto, BaseResponse response)
+        public static string ToLogData(this BaseDto dto)
         {
-            var logData = new
-            {
-                ClientPayload = dto,
-                Response = response,
-            };
-            return $"[{DateTime.UtcNow}] Incoming client payload\n" + JsonConvert.SerializeObject(logData, Formatting.Indented) + Environment.NewLine;
+            return $"[{DateTime.UtcNow}] Incoming client payload\n" + JsonConvert.SerializeObject(dto, Formatting.Indented) + Environment.NewLine;
         }
 
         public static string ToBlobName(this EmailDataDto dto)
